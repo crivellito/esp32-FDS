@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 void conexion (char* ssid, char* password, const char* bot_token);
-void conexion_control (char * ssid, char* password);
+//void conexion_control (char * ssid, char* password);
 
 #endif
 
