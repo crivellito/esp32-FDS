@@ -3,9 +3,9 @@
 #define CHAT_ID "1965602246"
 
 //void conexion_control (char* ssid, char* password){
-    
-//}
+  //if ---> mensaje recibido cambiar valores si no no
 
+//}
 
 void conexion (char* ssid, char* password, const char* bot_token){  
     WiFiClientSecure client; 
