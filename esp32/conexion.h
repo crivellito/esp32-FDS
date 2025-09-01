@@ -9,8 +9,10 @@
 #include <stdio.h>
 
 void conexion (char* ssid, char* password, const char* bot_token);
-void controlNuevosSms (int, const char* bot_token);
+void controlNuevosSms (int, const char* bot_token, const byte);
 
+extern WiFiClientSecure secured_client;
+extern UniversalTelegramBot bot;
 
 #endif
 
