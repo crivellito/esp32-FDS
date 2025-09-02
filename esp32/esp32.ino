@@ -1,45 +1,53 @@
-#include "conexion.h"
+#include "conexion_online.h"
 #include <WiFi.h>
-const char* bot_token = "";
-const char* bot_token = "";
+#define CHAT_ID "1965602246"
+const char* bot_token = "8230292931:AAFpT_B9qp5DdEuSFsVK28-Bkt6AwrORpTw";
 char* ssid = "sc-7d86 2.4G-2.4Ghz";
 char* password = "ZGZ3UGNKHDZQ";
 const unsigned long BOT_MTBS = 1000;
 unsigned long bot_lasttime;
-const byte led_gpio =2;
+
+//NOMBRES DE FUNCIONES ACTIVADAS POR TELEGRAM
+String comando_test = "test";
 
 WiFiClientSecure secured_client;
 UniversalTelegramBot bot(bot_token, secured_client);
 
+
+
+
 void setup(){
   Serial.begin(115200);
-  conexion(ssid, password, bot_token);
-  
+
+  //CONFIGURACION WIFI EN EL BOOT
+  conexion_wifi(ssid, password);
   secured_client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
   configTime (0,0,"pool.ntp.org");
-
-  Serial.println("Tiempo configurado. Conectando con Telegram...");
   bot.sendMessage(CHAT_ID, "Esp32 Online");
 
-  digitalWrite(led_gpio, OUTPUT);
 }
+
 
 
 void loop (){     
 
+  //COMUNICACION CON TELEGRAM
   if (millis() - bot_lasttime > BOT_MTBS){
-    //Serial.println("Por checkear mensajes nuevos");
-    
-    int numNuevosSms = bot.getUpdates(bot.last_message_received + 1);
-    Serial.print("mensajes nuevos encontrados: ");
-    Serial.println(numNuevosSms);
-    
+    int numNuevosSms = bot.getUpdates(bot.last_message_received + 1 );
     while (numNuevosSms){
-      controlNuevosSms (numNuevosSms, bot_token, led_gpio);
+    comunicacion_telegram (numNuevosSms);
       numNuevosSms = bot.getUpdates(bot.last_message_received + 1);
     }
     bot_lasttime = millis();
   }
+
+  //PRUEBA DE FUNCION ACTIVADA POR TELEGRAM, NOMBRE DE LA FUNCIÓN: TEST
+  if (comunicacion_telegram(1) == comando_test){
+    Serial.println("Se ha entrado a una función o bloque externo mediante el comando 'test'!");
+    bot.sendMessage(CHAT_ID, "Se entró a una funcion o bloque externo mediante el comando 'test'! ");
+    test();
+  }
+
 }
 
 
