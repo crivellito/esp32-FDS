@@ -1,6 +1,6 @@
 #include "conexion.h"
 #include <WiFi.h>
-const char* bot_token = "8230292931:AAFpT_B9qp5DdEuSFsVK28-Bkt6AwrORpTw";
+const char* bot_token = "";
 const char* bot_token = "";
 char* ssid = "sc-7d86 2.4G-2.4Ghz";
 char* password = "ZGZ3UGNKHDZQ";
