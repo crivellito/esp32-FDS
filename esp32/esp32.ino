@@ -1,6 +1,5 @@
 #include "conexion.h"
 #include <WiFi.h>
-#define CHAT_ID "1965602246"
 const char* bot_token = "";
 const char* bot_token = "";
 char* ssid = "sc-7d86 2.4G-2.4Ghz";
