@@ -1,4 +1,5 @@
 #include "conexion_online.h"
+#include <LiquidCrystal.h>
 #include <WiFi.h>
 #define CHAT_ID "1965602246"
 const char* bot_token = "8230292931:AAFpT_B9qp5DdEuSFsVK28-Bkt6AwrORpTw";
@@ -6,6 +7,7 @@ char* ssid = "sc-7d86 2.4G-2.4Ghz";
 char* password = "ZGZ3UGNKHDZQ";
 const unsigned long BOT_MTBS = 1000;
 unsigned long bot_lasttime;
+LiquidCrystal lcd (22,23,5,18,19,21);
 
 //NOMBRES DE FUNCIONES ACTIVADAS POR TELEGRAM
 String comando_test = "test";
@@ -13,7 +15,7 @@ String comando_test = "test";
 WiFiClientSecure secured_client;
 UniversalTelegramBot bot(bot_token, secured_client);
 
-
+//CONEXION CON EL LCD
 
 
 void setup(){
@@ -24,6 +26,9 @@ void setup(){
   secured_client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
   configTime (0,0,"pool.ntp.org");
   bot.sendMessage(CHAT_ID, "Esp32 Online");
+
+  //INICIALIZACION DEL DISPLAY LCD
+  lcd.begin(16,2);
 
 }
 
@@ -48,6 +53,14 @@ void loop (){
     test();
   }
 
+  //DISPLAY
+  delay(100);
+  lcd.setCursor(0,0);
+  lcd.print(comunicacion_telegram(1));
+  //lcd.setCursor(0,2);
+  //lcd.print("Neeeeeeek");
+
+  delay(500);
 }
 
 
