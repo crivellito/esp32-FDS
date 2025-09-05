@@ -20,15 +20,14 @@ UniversalTelegramBot bot(bot_token, secured_client);
 
 void setup(){
   Serial.begin(115200);
+//INICIALIZACION DEL DISPLAY LCD
+  lcd.begin(16,2);
 
   //CONFIGURACION WIFI EN EL BOOT
   conexion_wifi(ssid, password);
   secured_client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
   configTime (0,0,"pool.ntp.org");
   bot.sendMessage(CHAT_ID, "Esp32 Online");
-
-  //INICIALIZACION DEL DISPLAY LCD
-  lcd.begin(16,2);
 
 }
 
