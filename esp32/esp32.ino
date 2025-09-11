@@ -4,9 +4,9 @@
 #include <WiFi.h>
 #define CHAT_ID "1965602246"
 #define PIN_SENSOR_GAS 32
-const char* bot_token = "8230292931:AAFpT_B9qp5DdEuSFsVK28-Bkt6AwrORpTw";
-char* ssid = "sc-7d86 2.4G-2.4Ghz";
-char* password = "ZGZ3UGNKHDZQ";
+const char* bot_token = "";
+char* ssid = "";
+char* password = "";
 
 
 const unsigned long BOT_MTBS = 1000;
