@@ -1,8 +1,5 @@
 #include "conexion_online.h"
-#include <string.h>
-#define CHAT_ID "1965602246"
-#include <UniversalTelegramBot.h>
-#include <Arduino.h>
+
 
 void test () { delay (20000); }
 
@@ -16,7 +13,7 @@ String comunicacion_telegram (int numNuevosSms){
     if (from_name == ""){
       from_name = "Guest";
     }
-  return text;
+    return text;  
   }
 }
 
@@ -36,4 +33,11 @@ void conexion_wifi (char* ssid, char* password){
     Serial.println("Wifi conectado! ");     
     Serial.print(" IP: ");
     Serial.println(WiFi.localIP());
+}
+
+void sensor_gas (){
+    int estado = digitalRead(PIN_SENSOR_GAS);
+    if (estado == LOW) {
+      Serial.println("Gas detectado");
+    }
 }

@@ -2,12 +2,14 @@
 #include <LiquidCrystal.h>
 #include <WiFi.h>
 #define CHAT_ID "1965602246"
+#define PIN_SENSOR_GAS 32
 const char* bot_token = "8230292931:AAFpT_B9qp5DdEuSFsVK28-Bkt6AwrORpTw";
 char* ssid = "sc-7d86 2.4G-2.4Ghz";
 char* password = "ZGZ3UGNKHDZQ";
 const unsigned long BOT_MTBS = 1000;
 unsigned long bot_lasttime;
 LiquidCrystal lcd (22,23,5,18,19,21);
+
 
 //NOMBRES DE FUNCIONES ACTIVADAS POR TELEGRAM
 String comando_test = "test";
@@ -28,9 +30,9 @@ void setup(){
   secured_client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
   configTime (0,0,"pool.ntp.org");
   bot.sendMessage(CHAT_ID, "Esp32 Online");
-
+  pinMode(PIN_SENSOR_GAS, INPUT);
 }
-
+  
 
 
 void loop (){     
@@ -45,22 +47,27 @@ void loop (){
     bot_lasttime = millis();
   }
 
+  //FUNCION SENSOR DE GASES
+
+
+
+
   //PRUEBA DE FUNCION ACTIVADA POR TELEGRAM, NOMBRE DE LA FUNCIÓN: TEST
   if (comunicacion_telegram(1) == comando_test){
     Serial.println("Se ha entrado a una función o bloque externo mediante el comando 'test'!");
     bot.sendMessage(CHAT_ID, "Se entró a una funcion o bloque externo mediante el comando 'test'! ");
     test();
   }
-
+ 
   //DISPLAY
   delay(100);
   lcd.setCursor(0,0);
   lcd.print(comunicacion_telegram(1));
   //lcd.setCursor(0,2);
   //lcd.print("Neeeeeeek");
-
+  sensor_gas();
   delay(500);
-}
+}   
 
 
     
