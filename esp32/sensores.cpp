@@ -14,7 +14,7 @@ void sensor_temp() {
     Serial.print(temp);
     Serial.println(" °C");
   }
-
+  
   delay(2000); 
 }
 
