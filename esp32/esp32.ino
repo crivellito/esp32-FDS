@@ -5,7 +5,6 @@
 #define CHAT_ID "7720847255"
 #define PIN_SENSOR_GAS 32
 #define PIN_SENSOR_TEMP 4
-
 const char* bot_token = "8444785999:AAFXDQE1KP1wdjh0JGw4b-xsq0FxqFU2Nkg";
 char* ssid = "Personal-847";
 char* password = "W6Zaa9d48Y";
@@ -30,7 +29,7 @@ void setup(){
   Serial.begin(115200);
 //INICIALIZACION DEL DISPLAY LCD
   lcd.begin(16,2);
-
+  dht.begin()
   //CONFIGURACION WIFI EN EL BOOT
   conexion_wifi(ssid, password);
   secured_client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
