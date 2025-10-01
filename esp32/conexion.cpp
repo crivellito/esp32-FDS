@@ -1,6 +1,5 @@
 #include "conexion_online.h"
 
-
 void test () { delay (20000); }
 
 String comunicacion_telegram (int numNuevosSms){

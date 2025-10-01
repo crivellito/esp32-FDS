@@ -1,7 +1,11 @@
 #include "sensores.h"
+#define PIN_SENSOR_TEMP 4
+#define DHTTYPE DHT11 
+DHT dht(PIN_SENSOR_TEMP, DHTTYPE);
+
 
 void sensor_temp() {
-  loat temp = dht.readTemperature();
+  float temp = dht.readTemperature();
 
   if (isnan(temp)) {
     Serial.println("Error al leer el sensor DHT11");

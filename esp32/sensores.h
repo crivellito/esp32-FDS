@@ -1,10 +1,12 @@
 #ifndef SENSORES_H
 #define SENSORES_H
 #define PIN_SENSOR_GAS 32
-#define PIN_SENSOR_TEMP 4
-#define DHTTYPE DHT11 
-DHT dht(PIN_SENSOR_TEMP, DHTTYPE);
-#include "DHT.H"
+
+#include <Adafruit_Sensor.h>
+#include <DHT.h>
+
+extern DHT dht;
+
 
 
 #include <Arduino.h>

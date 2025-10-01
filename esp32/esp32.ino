@@ -11,6 +11,7 @@ char* password = "W6Zaa9d48Y";
 
 
 
+
 const unsigned long BOT_MTBS = 1000;
 unsigned long bot_lasttime;
 LiquidCrystal lcd (22,23,5,18,19,21);
@@ -29,13 +30,14 @@ void setup(){
   Serial.begin(115200);
 //INICIALIZACION DEL DISPLAY LCD
   lcd.begin(16,2);
-  dht.begin()
+  dht.begin();
   //CONFIGURACION WIFI EN EL BOOT
   conexion_wifi(ssid, password);
   secured_client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
   configTime (0,0,"pool.ntp.org");
   bot.sendMessage(CHAT_ID, "Esp32 Online");
   pinMode(PIN_SENSOR_GAS, INPUT);
+  pinMode(PIN_SENSOR_TEMP, INPUT);
 }
   
 
