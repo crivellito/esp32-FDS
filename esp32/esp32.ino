@@ -2,12 +2,14 @@
 #include "sensores.h"
 #include <LiquidCrystal.h>
 #include <WiFi.h>
-#define CHAT_ID "1965602246"
+#define CHAT_ID "7720847255"
 #define PIN_SENSOR_GAS 32
 #define PIN_SENSOR_TEMP 4
-const char* bot_token = "";
-char* ssid = "";
-char* password = "";
+
+const char* bot_token = "8444785999:AAFXDQE1KP1wdjh0JGw4b-xsq0FxqFU2Nkg";
+char* ssid = "Personal-847";
+char* password = "W6Zaa9d48Y";
+
 
 
 const unsigned long BOT_MTBS = 1000;
