@@ -8,9 +8,11 @@
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
 #include <Arduino.h>
+#include <LiquidCrystal.h>
 
 extern DHT dht;
 extern int temp_ext;
+extern LiquidCrystal lcd;
 
 bool sensor_gas();
 bool sensor_temp();
