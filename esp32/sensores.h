@@ -6,14 +6,14 @@
 #include <DHT.h>
 
 extern DHT dht;
-
+extern int temp_ext;
 
 
 #include <Arduino.h>
 
-void sensor_gas();
+bool sensor_gas();
 
-void sensor_temp();
+bool sensor_temp();
 
 
 #endif
