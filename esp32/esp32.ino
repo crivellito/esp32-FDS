@@ -1,20 +1,21 @@
 #include "conexion_online.h"
 #include "sensores.h"
+#include "logica.h"
 #include <LiquidCrystal.h>
 #include <WiFi.h>
 #define CHAT_ID "7720847255"
 #define PIN_SENSOR_GAS 32
 #define PIN_SENSOR_TEMP 4
-#define PIN_BUZZER X
+#define PIN_BUZZER 12
 
-const char* bot_token = "";
-char* ssid = "";
-char* password = "";
+const char* bot_token = "8444785999:AAFXDQE1KP1wdjh0JGw4b-xsq0FxqFU2Nkg";
+char* ssid = "sc-7d86 2.4G-2.4Ghz";
+char* password = "ZGZ3UGNKHDZQ";
 
 const unsigned long BOT_MTBS = 1000;
 unsigned long bot_lasttime;
 LiquidCrystal lcd (22,23,5,18,19,21);
-int temp_ext;
+int temp_ext = 20;
 
 //NOMBRES DE FUNCIONES ACTIVADAS POR TELEGRAM
 String comando_test = "test";
@@ -29,10 +30,12 @@ UniversalTelegramBot bot(bot_token, secured_client);
 
 void setup(){
   Serial.begin(115200);
+//DEFINICION DE USO DE PINES
   pinMode(PIN_SENSOR_GAS, INPUT);
   pinMode(PIN_SENSOR_TEMP, INPUT);
 //INICIALIZACION DEL DISPLAY LCD
   lcd.begin(16,2);
+//INICIALIZACION SENSOR DE TEMPERATURA
   dht.begin();
 //CONFIGURACION WIFI EN EL BOOT
   conexion_wifi(ssid, password);
@@ -55,10 +58,14 @@ void loop (){
   }
 
 //FUNCION SENSOR DE GASES
-  sensor_gas();
+//  sensor_gas();
 
 //FUNCION SENSOR DE TEMPERATURA
-  sensor_temp();
+//  sensor_temp();
+
+//FUNCION DE LOGICA DEL SENSOR
+logica (sensor_gas(), sensor_temp(), temp_ext, PIN_BUZZER);
+
 
 
 //PRUEBA DE FUNCION ACTIVADA POR TELEGRAM, NOMBRE DE LA FUNCIÓN: TEST

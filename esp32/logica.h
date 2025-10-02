@@ -1,0 +1,15 @@
+#ifndef LOGICA_H
+#define LOGICA_H
+#define CHAT_ID "7720847255"
+
+#include <UniversalTelegramBot.h>
+#include <LiquidCrystal.h>
+#include <Arduino.h>
+
+extern UniversalTelegramBot bot;
+extern LiquidCrystal lcd;
+
+void logica (bool, bool, int, int);
+void buzzer (int);
+
+#endif
