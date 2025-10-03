@@ -5,6 +5,7 @@
 #define CHAT_ID "7720847255"
 #define PIN_SENSOR_GAS 32
 #define PIN_SENSOR_TEMP 4
+#define PIN_BOCINA //falta definir
 const char* bot_token = "8444785999:AAFXDQE1KP1wdjh0JGw4b-xsq0FxqFU2Nkg";
 char* ssid = "Personal-847";
 char* password = "W6Zaa9d48Y";
@@ -38,6 +39,7 @@ void setup(){
   bot.sendMessage(CHAT_ID, "Esp32 Online");
   pinMode(PIN_SENSOR_GAS, INPUT);
   pinMode(PIN_SENSOR_TEMP, INPUT);
+  pinMode(PIN_BOCINA, OUTPUT);
 }
   
 
