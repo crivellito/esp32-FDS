@@ -1,9 +1,15 @@
-#include "conexion_online.h"
+#include "conexion.h"
 
 void test () { delay (20000); }
 
-String comunicacion_telegram (int numNuevosSms){
-  for (int i = 0 ; i < numNuevosSms ; i++){
+conexion :: conexion () {
+    num_nuevos_mensajes = 0;
+    ssid = password = "";
+}
+
+
+String conexion :: comunicacion_telegram (int num_nuevos_sms){
+  for (int i = 0 ; i < num_nuevos_sms ; i++){
     String chat_id = bot.messages[i].chat_id;
     String text = bot.messages[i].text;
     String from_name = bot.messages[i].from_name;
@@ -16,7 +22,7 @@ String comunicacion_telegram (int numNuevosSms){
   }
 }
 
-void conexion_wifi (char* ssid, char* password){  
+void conexion :: conexion_wifi (char* ssid, char* password){  
     Serial.println ("Conectando a Wifi");
     Serial.print ("Red: ");
     Serial.print (ssid);
