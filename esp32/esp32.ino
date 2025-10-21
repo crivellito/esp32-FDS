@@ -30,14 +30,10 @@ UniversalTelegramBot bot(bot_token, secured_client);
 
 void setup(){
   Serial.begin(115200);
-//DEFINICION DE USO DE PINES
   pinMode(PIN_SENSOR_GAS, INPUT);
   pinMode(PIN_SENSOR_TEMP, INPUT);
-//INICIALIZACION DEL DISPLAY LCD
   lcd.begin(16,2);
-//INICIALIZACION SENSOR DE TEMPERATURA
   dht.begin();
-//CONFIGURACION WIFI EN EL BOOT
   conexion_wifi(ssid, password);
   secured_client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
   configTime (0,0,"pool.ntp.org");
@@ -47,7 +43,6 @@ void setup(){
 
 
 void loop (){     
-//COMUNICACION CON TELEGRAM
   if (millis() - bot_lasttime > BOT_MTBS){
     int numNuevosSms = bot.getUpdates(bot.last_message_received + 1 );
     while (numNuevosSms){
@@ -55,32 +50,21 @@ void loop (){
       numNuevosSms = bot.getUpdates(bot.last_message_received + 1);
     }
     bot_lasttime = millis();
-  }
-
-//FUNCION SENSOR DE GASES
-//  sensor_gas();
-
-//FUNCION SENSOR DE TEMPERATURA
-//  sensor_temp();
-
-//FUNCION DE LOGICA DEL SENSOR
-logica (sensor_gas(), sensor_temp(), temp_ext, PIN_BUZZER);
+  } //CONEXION CON TELEGRAM
 
 
+  logica (sensor_gas(), sensor_temp(), temp_ext, PIN_BUZZER);
 
-//PRUEBA DE FUNCION ACTIVADA POR TELEGRAM, NOMBRE DE LA FUNCIÓN: TEST
+
+//PRUEBA DE FUNCION ACTIVADA POR TELEGRAM
   if (comunicacion_telegram(1) == comando_test){
     Serial.println("Se ha entrado a una función o bloque externo mediante el comando 'test'!");
     bot.sendMessage(CHAT_ID, "Se entró a una funcion o bloque externo mediante el comando 'test'! ");
     test();
   }
- 
-//DISPLAY
-  delay(100);
+
   lcd.setCursor(0,0);
   lcd.print(comunicacion_telegram(1));
-  //lcd.setCursor(0,2);
-  //lcd.print("Neeeeeeek");
   delay(500);
 }   
 

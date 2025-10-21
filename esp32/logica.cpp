@@ -8,7 +8,7 @@ void buzzer (int pin_buzzer){
 }
 
 void logica (bool gas, bool temp, int temp_ext, int pin_buzzer){
-  if(temp_ext > 30) {
+  if(temp_ext > 40) {
     bot.sendMessage(CHAT_ID, "Se detectaron temperaturas elevadas");  
   } 
   else if (gas == true && temp == true) {
