@@ -15,7 +15,7 @@ void logica(bool gas, float temp, int pin_buzzer) {
 
   if (temp > 40 && gas == true) {
     buzzer(pin_buzzer);
-    bot.sendMessage(CHAT_ID, "Se detectó posibilida d de incendio, la alarma se activó");
+    bot.sendMessage(CHAT_ID, "Se detectó posibilidad de incendio, la alarma se activó");
   }
 
   if (gas == true) {
