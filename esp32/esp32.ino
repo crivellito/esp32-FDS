@@ -42,6 +42,8 @@ void setup(){
   
 
 
+
+
 void loop (){     
   if (millis() - bot_lasttime > BOT_MTBS){
     int numNuevosSms = bot.getUpdates(bot.last_message_received + 1 );
