@@ -9,13 +9,12 @@
 #define PIN_BUZZER 12
 
 const char* bot_token = "8444785999:AAFXDQE1KP1wdjh0JGw4b-xsq0FxqFU2Nkg";
-char* ssid = "sc-7d86 2.4G-2.4Ghz";
-char* password = "ZGZ3UGNKHDZQ";
+char* ssid = "UTNFRC";
+char* password = "";
 
 const unsigned long BOT_MTBS = 1000;
 unsigned long bot_lasttime;
 LiquidCrystal lcd (22,23,5,18,19,21);
-int temp_ext = 20;
 
 //NOMBRES DE FUNCIONES ACTIVADAS POR TELEGRAM
 String comando_test = "test";
@@ -32,6 +31,7 @@ void setup(){
   Serial.begin(115200);
   pinMode(PIN_SENSOR_GAS, INPUT);
   pinMode(PIN_SENSOR_TEMP, INPUT);
+  pinMode(PIN_BUZZER, OUTPUT);
   lcd.begin(16,2);
   dht.begin();
   conexion_wifi(ssid, password);
@@ -55,7 +55,7 @@ void loop (){
   } //CONEXION CON TELEGRAM
 
 
-  logica (sensor_gas(), sensor_temp(), temp_ext, PIN_BUZZER);
+  logica (sensor_gas(), sensor_temp(), PIN_BUZZER);
 
 
 //PRUEBA DE FUNCION ACTIVADA POR TELEGRAM
