@@ -9,7 +9,7 @@
 extern UniversalTelegramBot bot;
 extern LiquidCrystal lcd;
 
-void logica (bool, bool, int, int);
+void logica (bool, float, int);
 void buzzer (int);
 
 #endif

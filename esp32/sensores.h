@@ -15,6 +15,6 @@ extern int temp_ext;
 extern LiquidCrystal lcd;
 
 bool sensor_gas();
-bool sensor_temp();
+float sensor_temp();
 
 #endif

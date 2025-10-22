@@ -16,22 +16,25 @@ String comunicacion_telegram (int numNuevosSms){
   }
 }
 
-void conexion_wifi (char* ssid, char* password){  
-    Serial.println ("Conectando a Wifi");
+void conexion_wifi (char* ssid, char* password){
+    /*Serial.println ("Conectando a Wifi");
     Serial.print ("Red: ");
     Serial.print (ssid);
+    */
     WiFi.mode (WIFI_STA);
     WiFi.begin (ssid,password);
     while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
+      /*delay(500);
       Serial.print(".");
       delay(500);
+      */
     }
-    delay(500);
+    /*delay(500);
     Serial.println("");
     Serial.println("Wifi conectado! ");     
     Serial.print(" IP: ");
     Serial.println(WiFi.localIP());
+    */
 }
 
 
