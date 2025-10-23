@@ -2,10 +2,10 @@
 
 void buzzer (int pin_buzzer){
   for (int i=0 ; i<20 ; i++){
-    digitalWrite(pin_buzzer, LOW);
-    delay(200);
     digitalWrite(pin_buzzer, HIGH);
-  }
+    delay(800);
+    digitalWrite(pin_buzzer, LOW);
+    }
 }
 
 void logica(bool gas, float temp, int pin_buzzer) {

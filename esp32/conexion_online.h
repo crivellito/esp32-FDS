@@ -1,6 +1,6 @@
 #ifndef CONEXION_ONLINE_H
 #define CONEXION_ONLINE_H
-#define CHAT_ID "7720847255"
+#define CHAT_ID "-1003100355289"                             //"7720847255"
 
 #include <string.h>
 #include <Arduino.h>

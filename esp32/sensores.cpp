@@ -9,7 +9,11 @@ float sensor_temp() {
   if (isnan(temp)) {
     Serial.println("Error al leer el sensor DHT11");
   } else {
+    Serial.print("temp: ");   
+    Serial.println(temp); 
+    delay (1000); 
      return temp;
+
   }
 }
 
