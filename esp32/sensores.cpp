@@ -1,19 +1,17 @@
 #include "sensores.h"
-
 DHT dht(PIN_SENSOR_TEMP, DHTTYPE);
 
-void show_temp_display (int);
 
 float sensor_temp() {
   float temp = dht.readTemperature();
   if (isnan(temp)) {
     Serial.println("Error al leer el sensor DHT11");
   } else {
-    Serial.print("temp: ");   
-    Serial.println(temp); 
-    delay (1000); 
-     return temp;
-
+    /*
+      Serial.print("temp: ");   
+      Serial.println(temp); 
+    */
+    return temp;
   }
 }
 

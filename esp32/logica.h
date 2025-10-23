@@ -8,8 +8,11 @@
 
 extern UniversalTelegramBot bot;
 extern LiquidCrystal lcd;
+extern int temp_limit;
 
 void logica (bool, float, int);
 void buzzer (int);
+
+
 
 #endif

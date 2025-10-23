@@ -9,13 +9,18 @@
 #include <UniversalTelegramBot.h>
 #include <ArduinoJson.h>
 #include <stdio.h>
+#include <LiquidCrystal.h>
+#include "sensores.h"
+
 
 void conexion_wifi (char*, char*);
-String comunicacion_telegram (int);
-void test ();
+String last_mensaje (int);
+void info ();
+void new_mensajes (const unsigned long, unsigned long);
 
 extern WiFiClientSecure secured_client;
 extern UniversalTelegramBot bot;
+extern LiquidCrystal lcd;
 
 #endif
 
