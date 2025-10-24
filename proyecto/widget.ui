@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>747</width>
+    <height>434</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Panel de control anti incendios</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">selection-background-color: rgb(180, 180, 180);</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>341</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Ingrese el Nombre del Wifi:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>341</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Ingrese la contraseña del Wifi:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="NombreWifi">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>30</y>
+     <width>341</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ContraseniaWifi">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>80</y>
+     <width>301</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>140</y>
+     <width>341</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Temperatura Detectada&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>190</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Gas Detectado&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Temp">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>160</y>
+     <width>71</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>380</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 161, 161);
+selection-background-color: rgb(255, 175, 175);</string>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="btnAlarmaGas">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>190</y>
+     <width>26</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>26</width>
+     <height>26</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>26</width>
+     <height>26</height>
+    </size>
+   </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #2e2e2e;      /* LED apagado */
+border-radius: 12px;             /* mitad del tamaño para que sea circular */
+border: 1px solid #C0C0C0;
+min-width: 24px;
+min-height: 24px;
+max-width: 24px;
+max-height: 24px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+   <property name="arrowType">
+    <enum>Qt::ArrowType::NoArrow</enum>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="btnNivelBajo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>130</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+   background-color: #2e2e2e;      /* verde encendido */
+    border-radius: 24px;            /* círculo perfecto */
+    border: 1px solid #C0C0C0;
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+   <property name="arrowType">
+    <enum>Qt::ArrowType::NoArrow</enum>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="btnNivelMedio">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>190</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #2e2e2e;      /* LED encendido */
+    border-radius: 24px;           /* círculo perfecto */
+    border: 1px solid #C0C0C0;
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+   <property name="arrowType">
+    <enum>Qt::ArrowType::NoArrow</enum>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="btnNivelAlto">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>250</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #2e2e2e;         /* LED encendido */
+    border-radius: 24px;           /* círculo perfecto */
+    border: 1px solid #C0C0C0;
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+   <property name="arrowType">
+    <enum>Qt::ArrowType::NoArrow</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>140</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Nivel bajo de peligro&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>200</y>
+     <width>251</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Nivel medio de peligro&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>260</y>
+     <width>281</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Nivel alto de peligro&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>380</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Conectar</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
