@@ -1,16 +1,27 @@
-#include "conexion_online.h"
+#include "config.h"
 #include "sensores.h"
+#include "conexion_online.h"
 #include "logica.h"
-#include <LiquidCrystal.h>
+
 #include <WiFi.h>
+#include <WiFiClientSecure.h>
+#include <LiquidCrystal.h>
+#include <DHT.h>
+#include <UniversalTelegramBot.h>
+#include <Preferences.h>
 
-#define CHAT_ID "-1003100355289"                                         //"7720847255"
-#define PIN_SENSOR_GAS 32
-#define PIN_SENSOR_TEMP 4
-#define PIN_BUZZER 12
+WiFiClientSecure cliente_seguro;
+LiquidCrystal pantalla_lcd( 22, 23, 5, 18, 19, 21 ); 
+UniversalTelegramBot bot(TOKEN_BOT, cliente_seguro);
+DHT sensor_dht(PIN_TEMP, TIPO_DHT);
+Preferences preferences;
 
-#define TAM 10
-#define MAX_LEN 50
+unsigned long bot_ultimo_tiempo = 0;
+int limite_temperatura = LIMITE_TEMP_DEFECTO; // Límite de temperatura
+bool alarma_activa = true;
+
+char* nombre_red = nullptr;
+char* clave_red = nullptr;
 char escritura[TAM][MAX_LEN];
 char cmd[10];
 
@@ -22,41 +33,32 @@ char* ssid = nullptr;
 char* password = nullptr;
 char* Dpto = nullptr;
 
-int temp_limit = 40;
-String info_telegram = "info";
 
-
-WiFiClientSecure secured_client;
-UniversalTelegramBot bot(bot_token, secured_client);
-LiquidCrystal lcd (22,23,5,18,19,21);
-
-
-
-void setup(){
-
+void setup() {
   Serial.begin(115200);
-  lcd.begin(16,2);
-  dht.begin();
+  configurar_sensores();
+  configurar_logica();
+  configurar_telegram();
 
-  pinMode(PIN_SENSOR_GAS, INPUT);
-  pinMode(PIN_SENSOR_TEMP, INPUT);
-  pinMode(PIN_BUZZER, OUTPUT);
-  secured_client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
-  configTime (0,0,"pool.ntp.org");
-  //   bot.sendMessage(CHAT_ID, "FDS-Online");
-}
+  preferences.begin(PREFERENCES_NS, false);
+ 
+  //Se carga el ssid y la clave, usa el ssid_defecto de config.h si no hay uno definido
+  String ssid_guardado = preferences.getString("ssid", WIFI_SSID_DEFECTO);
+  ssid_guardado.toCharArray(escritura[0], MAX_LEN);
+  nombre_red = escritura[0];
+
+  String clave_guardada = preferences.getString("clave", WIFI_CLAVE_DEFECTO);
+  clave_guardada.toCharArray(escritura[1], MAX_LEN);
+  clave_red = escritura[1];
   
-
-
-void loop (){     
-  
-  float temp = sensor_temp();
-
-  new_mensajes (BOT_MTBS, bot_lasttime);
-  logica (sensor_gas(), sensor_temp(), PIN_BUZZER);
-
-  if (last_mensaje(1) == info_telegram){
-    info();
+  //Intenta conectar
+  if (strlen(nombre_red) > 0) {
+      conectar_wifi(nombre_red, clave_red);
+  } else {
+      //En caso de no poder conectarse el wifi:
+      pantalla_lcd.print("Sin WiFi.");
+      pantalla_lcd.setCursor(0,1);
+      pantalla_lcd.print("Esperando Serial");
   }
 
 if(Serial.available()) {
@@ -99,5 +101,25 @@ String mensaje = "sensor~";
   delay(1000); // enviar cada segundo
 }
 
+void loop() {
+  //Revisa si hay nuevas credenciales WiFi por puerto serie
+  gestionar_wifi_serial();
+ 
+  //Lee sensores
+  float temperatura_actual = leer_temperatura();
+  bool gas_detectado = leer_gas();
 
-    
+  //Maneja comunicación con telegram
+  gestionar_comandos_telegram(temperatura_actual, gas_detectado);
+ 
+  //Ejecuta lógica de alarma
+  ejecutar_logica(gas_detectado, temperatura_actual);
+
+  //Actualiza el lcd y muestra lo sensado
+  mostrar_estado_lcd(temperatura_actual, gas_detectado);
+ 
+  //Envia estado por puerto serie
+  enviar_estado_serial(temperatura_actual, gas_detectado);
+
+  delay(1000); 
+}
