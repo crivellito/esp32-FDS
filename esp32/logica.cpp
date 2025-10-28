@@ -1,36 +1,55 @@
 #include "logica.h"
-static String last_msg = ""; 
-String temp_alta_msg = "Se detectaron temperaturas elevadas";
-String posib_incendio_msg = "Se detectó posibilidad de incendio, la alarma se activó";
-String gas_msg = "Se detectaron gases";
+#include "config.h"
 
 
-void buzzer (int pin_buzzer) {
-  for (int i=0 ; i<20 ; i++){
-    digitalWrite(pin_buzzer, HIGH);
+static String ultimo_mensaje_alerta = "";
+static const String msg_temp_alta = "Se detectaron temperaturas elevadas";
+static const String msg_incendio = "Se detecto posibilidad de incendio, la alarma se activo";
+static const String msg_gas = "Se detectaron gases";
+
+
+static void activar_zumbador(int pin_zumbador) {
+  for (int i = 0; i < 5; i++) {
+    digitalWrite(pin_zumbador, HIGH);
     delay(800);
-    digitalWrite(pin_buzzer, LOW);
+    digitalWrite(pin_zumbador, LOW);
   }
 }
 
-void logica (bool gas, float temp, int pin_buzzer) {
-  
-  if (temp > temp_limit && gas == true && last_msg != posib_incendio_msg) {
-    buzzer(pin_buzzer);
-    bot.sendMessage(CHAT_ID, posib_incendio_msg);
-    last_msg = posib_incendio_msg;
-  }
-  
-  if (temp > temp_limit && last_msg != temp_alta_msg) {
-    bot.sendMessage(CHAT_ID, temp_alta_msg);
-    last_msg = temp_alta_msg;
-  } 
-
-  if (gas == true && last_msg != gas_msg) {
-    bot.sendMessage(CHAT_ID, gas_msg);
-    last_msg = gas_msg;
-  }
+void configurar_logica() {
+  pinMode(PIN_ZUMBADOR, OUTPUT);
+  digitalWrite(PIN_ZUMBADOR, LOW); 
 }
 
 
 
+
+void ejecutar_logica(bool hay_gas, float temperatura) {
+
+  //Fuego (Temp alta y Gas)
+  if (temperatura > limite_temperatura && hay_gas == true) {
+    if (ultimo_mensaje_alerta != msg_incendio) {
+      activar_zumbador(PIN_ZUMBADOR);
+      bot.sendMessage(CHAT_ID, msg_incendio);
+      ultimo_mensaje_alerta = msg_incendio;
+    }
+  }
+  //Solo Temp Alta
+  else if (temperatura > limite_temperatura) {
+    if (ultimo_mensaje_alerta != msg_temp_alta) {
+      bot.sendMessage(CHAT_ID, msg_temp_alta);
+      ultimo_mensaje_alerta = msg_temp_alta;
+    }
+  }
+  //Solo Gas
+  else if (hay_gas == true) {
+    if (ultimo_mensaje_alerta != msg_gas) {
+      bot.sendMessage(CHAT_ID, msg_gas);
+      ultimo_mensaje_alerta = msg_gas;
+    }
+  }
+  //Normal
+  else {
+    ultimo_mensaje_alerta = ""; // Limpia el ultimo mensaje
+  }
+}

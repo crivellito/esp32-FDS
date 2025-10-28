@@ -1,18 +1,15 @@
 #ifndef LOGICA_H
 #define LOGICA_H
-#define CHAT_ID "-1003100355289"                                                       //"7720847255"
 
-#include <UniversalTelegramBot.h>
-#include <LiquidCrystal.h>
 #include <Arduino.h>
+#include <UniversalTelegramBot.h>
+
 
 extern UniversalTelegramBot bot;
-extern LiquidCrystal lcd;
-extern int temp_limit;
+extern int limite_temperatura;
 
-void logica (bool, float, int);
-void buzzer (int);
-
-
+static void activar_zumbador(int);
+void configurar_logica();
+void ejecutar_logica(bool hay_gas, float temperatura);
 
 #endif
