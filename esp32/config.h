@@ -2,14 +2,15 @@
 #define CONFIG_H
 
 //Red y Telegram
-#define WIFI_SSID "sc-7d86 2.4G-2.4Ghz"
-#define WIFI_CLAVE "ZGZ3UGNKHDZQ"
+#define WIFI_SSID_DEFECTO "UTNFRC"
+#define WIFI_CLAVE_DEFECTO ""
+#define PREFERENCES_NS "wifi_creds"
 
 #define TOKEN_BOT "8444785999:AAFXDQE1KP1wdjh0JGw4b-xsq0FxqFU2Nkg"
 #define CHAT_ID "-1003100355289"
 #define INTERVALO_BOT_MS 1000 // Intervalo entre lectura de mensajes
 
-
+// Definición de Pines (LCD NO va aquí, debe usarse el constructor)
 #define PIN_GAS 32
 #define PIN_TEMP 4
 #define PIN_ZUMBADOR 12

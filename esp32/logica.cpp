@@ -8,11 +8,15 @@ static const String msg_incendio = "Se detecto posibilidad de incendio, la alarm
 static const String msg_gas = "Se detectaron gases";
 
 
-static void activar_zumbador(int pin_zumbador, int pitidos) {
-  for (int i = 0; i < pitidos; i++) {
-    digitalWrite(pin_zumbador, HIGH);
-    delay(500);
-    digitalWrite(pin_zumbador, LOW);
+// Función BLOQUEANTE para activar el zumbador. Bloquea el sistema por (pitidos * 600ms)
+void activar_zumbador(int pin_zumbador, int pitidos) {
+  if (alarma_activa){
+    for (int i = 0; i < pitidos; i++) {
+      digitalWrite(pin_zumbador, HIGH);
+      delay(300);
+      digitalWrite(pin_zumbador, LOW);
+      delay(300);
+    }
   }
 }
 
@@ -22,14 +26,12 @@ void configurar_logica() {
 }
 
 
-
-
 void ejecutar_logica(bool hay_gas, float temperatura) {
 
   //Fuego (Temp alta y Gas)
   if (temperatura > limite_temperatura && hay_gas == true) {
     if (ultimo_mensaje_alerta != msg_incendio) {
-      activar_zumbador(PIN_ZUMBADOR, 10);
+      activar_zumbador(PIN_ZUMBADOR, 20);
       bot.sendMessage(CHAT_ID, msg_incendio);
       ultimo_mensaje_alerta = msg_incendio;
     }
@@ -38,7 +40,7 @@ void ejecutar_logica(bool hay_gas, float temperatura) {
   else if (temperatura > limite_temperatura) {
     if (ultimo_mensaje_alerta != msg_temp_alta) {
       bot.sendMessage(CHAT_ID, msg_temp_alta);
-      activar_zumbador(PIN_ZUMBADOR, 1); 
+      activar_zumbador(PIN_ZUMBADOR, 1); // Pitido corto de aviso
       ultimo_mensaje_alerta = msg_temp_alta;
     }
   }
@@ -46,7 +48,7 @@ void ejecutar_logica(bool hay_gas, float temperatura) {
   else if (hay_gas == true) {
     if (ultimo_mensaje_alerta != msg_gas) {
       bot.sendMessage(CHAT_ID, msg_gas);
-      activar_zumbador(PIN_ZUMBADOR, 1);  
+      activar_zumbador(PIN_ZUMBADOR, 1); // Pitido corto de aviso
       ultimo_mensaje_alerta = msg_gas;
     }
   }

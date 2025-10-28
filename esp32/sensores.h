@@ -9,7 +9,6 @@
 
 extern LiquidCrystal pantalla_lcd;
 extern DHT sensor_dht;
-extern bool hay_gas;
 
 
 void configurar_sensores();

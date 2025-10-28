@@ -6,6 +6,7 @@
 #include <WiFiClientSecure.h>
 #include <UniversalTelegramBot.h>
 #include <LiquidCrystal.h>
+#include <Preferences.h>
 #include "config.h"
 
 
@@ -13,7 +14,8 @@ extern UniversalTelegramBot bot;
 extern WiFiClientSecure cliente_seguro;
 extern LiquidCrystal pantalla_lcd;
 extern unsigned long bot_ultimo_tiempo;
-
+extern bool alarma_activa;
+extern Preferences preferences;
 
 extern char* nombre_red;
 extern char* clave_red;

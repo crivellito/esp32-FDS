@@ -1,6 +1,6 @@
 #include "sensores.h"
 #include "config.h"
-#include "logica.h"
+
 
 //Inicializa pines
 void configurar_sensores() {
@@ -24,9 +24,6 @@ float leer_temperatura() {
 //Lee el sensor de gas devuelve el estado
 bool leer_gas() {
   int estado = digitalRead(PIN_GAS);
-  if (estado == LOW) {
-    hay_gas = true;
-  }
   return (estado == LOW); // Retorna true si hay gas (LOW)
 }
 
