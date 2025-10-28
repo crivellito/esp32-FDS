@@ -11,7 +11,6 @@
 #include <Preferences.h>
 
 WiFiClientSecure cliente_seguro;
-// Se usan los pines del config.h para compatibilidad, aunque no se hayan definido en config.h, es la forma que estabas usando
 LiquidCrystal pantalla_lcd( 22, 23, 5, 18, 19, 21 ); 
 UniversalTelegramBot bot(TOKEN_BOT, cliente_seguro);
 DHT sensor_dht(PIN_TEMP, TIPO_DHT);
@@ -34,20 +33,20 @@ void setup() {
 
   preferences.begin(PREFERENCES_NS, false);
  
-  // Cargar SSID (usa el defecto si no hay nada guardado)
+  //Se carga el ssid y la clave, usa el ssid_defecto de config.h si no hay uno definido
   String ssid_guardado = preferences.getString("ssid", WIFI_SSID_DEFECTO);
   ssid_guardado.toCharArray(escritura[0], MAX_LEN);
   nombre_red = escritura[0];
 
-  // Cargar Clave (usa el defecto si no hay nada guardado)
   String clave_guardada = preferences.getString("clave", WIFI_CLAVE_DEFECTO);
   clave_guardada.toCharArray(escritura[1], MAX_LEN);
   clave_red = escritura[1];
   
-  // Intentar conectar con las credenciales cargadas
+  //Intenta conectar
   if (strlen(nombre_red) > 0) {
       conectar_wifi(nombre_red, clave_red);
   } else {
+      //En caso de no poder conectarse el wifi:
       pantalla_lcd.print("Sin WiFi.");
       pantalla_lcd.setCursor(0,1);
       pantalla_lcd.print("Esperando Serial");
@@ -68,10 +67,10 @@ void loop() {
   //Ejecuta lógica de alarma
   ejecutar_logica(gas_detectado, temperatura_actual);
 
-  //Actualiza el lcd
+  //Actualiza el lcd y muestra lo sensado
   mostrar_estado_lcd(temperatura_actual, gas_detectado);
  
-  //Enviar estado por puerto serie
+  //Envia estado por puerto serie
   enviar_estado_serial(temperatura_actual, gas_detectado);
 
   delay(1000); 

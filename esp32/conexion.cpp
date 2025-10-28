@@ -104,11 +104,8 @@ void gestionar_wifi_serial() {
       if (indice == 0) {
           nombre_red = escritura[0];
           preferences.putString("ssid", valor);
-                   
-          // FORZAR DESCONEXIÓN INMEDIATA
           WiFi.disconnect(true); 
-          delay(500); // Dar tiempo para que suelte la red vieja (CORREGIDO)
-          Serial.println("Nuevo SSID recibido. Desconectando para reconectar...");
+          delay(500); //delay para que llegue a borrar la red anterior
         } 
       else if (indice == 1) {
         clave_red = escritura[1];

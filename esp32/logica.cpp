@@ -8,7 +8,6 @@ static const String msg_incendio = "Se detecto posibilidad de incendio, la alarm
 static const String msg_gas = "Se detectaron gases";
 
 
-// Función BLOQUEANTE para activar el zumbador. Bloquea el sistema por (pitidos * 600ms)
 void activar_zumbador(int pin_zumbador, int pitidos) {
   if (alarma_activa){
     for (int i = 0; i < pitidos; i++) {
@@ -19,6 +18,7 @@ void activar_zumbador(int pin_zumbador, int pitidos) {
     }
   }
 }
+
 
 void configurar_logica() {
   pinMode(PIN_ZUMBADOR, OUTPUT);
@@ -39,8 +39,8 @@ void ejecutar_logica(bool hay_gas, float temperatura) {
   //Solo Temp Alta
   else if (temperatura > limite_temperatura) {
     if (ultimo_mensaje_alerta != msg_temp_alta) {
-      bot.sendMessage(CHAT_ID, msg_temp_alta);
-      activar_zumbador(PIN_ZUMBADOR, 1); // Pitido corto de aviso
+      bot.sendMessage(CHAT_ID, msg_temp_alta );
+      activar_zumbador(PIN_ZUMBADOR, 1);
       ultimo_mensaje_alerta = msg_temp_alta;
     }
   }
@@ -48,7 +48,7 @@ void ejecutar_logica(bool hay_gas, float temperatura) {
   else if (hay_gas == true) {
     if (ultimo_mensaje_alerta != msg_gas) {
       bot.sendMessage(CHAT_ID, msg_gas);
-      activar_zumbador(PIN_ZUMBADOR, 1); // Pitido corto de aviso
+      activar_zumbador(PIN_ZUMBADOR, 1);
       ultimo_mensaje_alerta = msg_gas;
     }
   }

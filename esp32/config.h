@@ -17,7 +17,7 @@
 
 #define TIPO_DHT DHT11
 
-#define LIMITE_TEMP_DEFECTO 40
+#define LIMITE_TEMP_DEFECTO 35
 
 //Tamaño de los buffer del puerto serie
 #define TAM 10
