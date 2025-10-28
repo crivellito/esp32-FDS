@@ -40,12 +40,14 @@ public:
     QPushButton *pushButton_3;
     QLabel *label_8;
     QLineEdit *PuertoSerie;
+    QLabel *label_9;
+    QLineEdit *Departamento;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QString::fromUtf8("Widget"));
-        Widget->resize(747, 434);
+        Widget->resize(767, 481);
         Widget->setStyleSheet(QString::fromUtf8("selection-background-color: rgb(180, 180, 180);"));
         label = new QLabel(Widget);
         label->setObjectName(QString::fromUtf8("label"));
@@ -65,25 +67,25 @@ public:
         ContraseniaWifi->setGeometry(QRect(290, 70, 341, 22));
         label_3 = new QLabel(Widget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(10, 170, 341, 61));
+        label_3->setGeometry(QRect(10, 220, 341, 61));
         label_3->setFont(font);
         label_4 = new QLabel(Widget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(10, 220, 171, 31));
+        label_4->setGeometry(QRect(10, 270, 171, 31));
         label_4->setFont(font);
         Temp = new QLineEdit(Widget);
         Temp->setObjectName(QString::fromUtf8("Temp"));
-        Temp->setGeometry(QRect(290, 190, 71, 22));
+        Temp->setGeometry(QRect(290, 240, 71, 22));
         Temp->setReadOnly(true);
         pushButton_2 = new QPushButton(Widget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(620, 380, 111, 41));
+        pushButton_2->setGeometry(QRect(630, 430, 111, 41));
         pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 161, 161);\n"
 "selection-background-color: rgb(255, 175, 175);"));
         btnAlarmaGas = new QToolButton(Widget);
         btnAlarmaGas->setObjectName(QString::fromUtf8("btnAlarmaGas"));
         btnAlarmaGas->setEnabled(false);
-        btnAlarmaGas->setGeometry(QRect(310, 220, 26, 26));
+        btnAlarmaGas->setGeometry(QRect(310, 270, 26, 26));
         btnAlarmaGas->setMinimumSize(QSize(26, 26));
         btnAlarmaGas->setMaximumSize(QSize(26, 26));
         btnAlarmaGas->setTabletTracking(false);
@@ -103,7 +105,7 @@ public:
         btnNivelBajo = new QToolButton(Widget);
         btnNivelBajo->setObjectName(QString::fromUtf8("btnNivelBajo"));
         btnNivelBajo->setEnabled(false);
-        btnNivelBajo->setGeometry(QRect(680, 180, 50, 50));
+        btnNivelBajo->setGeometry(QRect(690, 230, 50, 50));
         btnNivelBajo->setMinimumSize(QSize(50, 50));
         btnNivelBajo->setMaximumSize(QSize(50, 50));
         btnNivelBajo->setTabletTracking(false);
@@ -124,7 +126,7 @@ public:
         btnNivelMedio = new QToolButton(Widget);
         btnNivelMedio->setObjectName(QString::fromUtf8("btnNivelMedio"));
         btnNivelMedio->setEnabled(false);
-        btnNivelMedio->setGeometry(QRect(680, 240, 50, 50));
+        btnNivelMedio->setGeometry(QRect(690, 290, 50, 50));
         btnNivelMedio->setMinimumSize(QSize(50, 50));
         btnNivelMedio->setMaximumSize(QSize(50, 50));
         btnNivelMedio->setTabletTracking(false);
@@ -144,7 +146,7 @@ public:
         btnNivelAlto = new QToolButton(Widget);
         btnNivelAlto->setObjectName(QString::fromUtf8("btnNivelAlto"));
         btnNivelAlto->setEnabled(false);
-        btnNivelAlto->setGeometry(QRect(680, 300, 50, 50));
+        btnNivelAlto->setGeometry(QRect(690, 350, 50, 50));
         btnNivelAlto->setMinimumSize(QSize(50, 50));
         btnNivelAlto->setMaximumSize(QSize(50, 50));
         btnNivelAlto->setTabletTracking(false);
@@ -163,19 +165,19 @@ public:
         btnNivelAlto->setArrowType(Qt::ArrowType::NoArrow);
         label_5 = new QLabel(Widget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(460, 190, 221, 31));
+        label_5->setGeometry(QRect(470, 240, 221, 31));
         label_5->setFont(font);
         label_6 = new QLabel(Widget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(440, 250, 251, 31));
+        label_6->setGeometry(QRect(450, 300, 251, 31));
         label_6->setFont(font);
         label_7 = new QLabel(Widget);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(460, 310, 281, 31));
+        label_7->setGeometry(QRect(470, 360, 281, 31));
         label_7->setFont(font);
         pushButton_3 = new QPushButton(Widget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(10, 380, 121, 41));
+        pushButton_3->setGeometry(QRect(20, 430, 121, 41));
         label_8 = new QLabel(Widget);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setGeometry(QRect(10, 90, 341, 61));
@@ -183,6 +185,13 @@ public:
         PuertoSerie = new QLineEdit(Widget);
         PuertoSerie->setObjectName(QString::fromUtf8("PuertoSerie"));
         PuertoSerie->setGeometry(QRect(290, 110, 341, 20));
+        label_9 = new QLabel(Widget);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+        label_9->setGeometry(QRect(10, 130, 341, 61));
+        label_9->setFont(font);
+        Departamento = new QLineEdit(Widget);
+        Departamento->setObjectName(QString::fromUtf8("Departamento"));
+        Departamento->setGeometry(QRect(290, 150, 341, 20));
 
         retranslateUi(Widget);
 
@@ -206,6 +215,7 @@ public:
         label_7->setText(QCoreApplication::translate("Widget", "<html><head/><body><p align=\"justify\"><span style=\" font-size:16pt;\">Nivel alto de peligro</span></p></body></html>", nullptr));
         pushButton_3->setText(QCoreApplication::translate("Widget", "Conectar", nullptr));
         label_8->setText(QCoreApplication::translate("Widget", "<html><head/><body><p align=\"justify\"><span style=\" font-size:16pt;\">Ingrese el Puerto Serie:</span></p></body></html>", nullptr));
+        label_9->setText(QCoreApplication::translate("Widget", "<html><head/><body><p align=\"justify\"><span style=\" font-size:16pt;\">Ingrese el departamento:</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

@@ -9,7 +9,7 @@
 #include <Preferences.h>
 #include "config.h"
 
-
+//VARIABLES GLOBALES
 extern UniversalTelegramBot bot;
 extern WiFiClientSecure cliente_seguro;
 extern LiquidCrystal pantalla_lcd;
@@ -19,6 +19,7 @@ extern Preferences preferences;
 
 extern char* nombre_red;
 extern char* clave_red;
+extern char* Dpto; // <-- AÑADIDO
 extern char escritura[TAM][MAX_LEN];
 
 

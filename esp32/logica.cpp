@@ -1,16 +1,16 @@
 #include "logica.h"
-static String last_msg = ""; 
-String temp_alta_msg = "Se detectaron temperaturas elevadas en el dpto: " + String(Dpto);
-String posib_incendio_msg = "En el Dpto:" + String(Dpto) "se detectó posibilidad de incendio, la alarma se activó";
-String gas_msg = "Se detectaron gases en el Dpto: " + String(Dpto);
+#include "config.h"
 
-
-static String ultimo_mensaje_alerta = "";
+// MENSAJES PREDEFINIDOS 
 static const String msg_temp_alta = "Se detectaron temperaturas elevadas";
 static const String msg_incendio = "Se detecto posibilidad de incendio, la alarma se activo";
 static const String msg_gas = "Se detectaron gases";
 
+// MENSAJE PARA EVITAR SPAM
+static String ultimo_mensaje_alerta = "";
 
+
+// FUNCION - CONTROL - MANEJA EL PITIDO DEL ZUMBADOR
 void activar_zumbador(int pin_zumbador, int pitidos) {
   if (alarma_activa){
     for (int i = 0; i < pitidos; i++) {
@@ -22,7 +22,7 @@ void activar_zumbador(int pin_zumbador, int pitidos) {
   }
 }
 
-
+// FUNCION - INICIALIACION - DEFINE PINES DEL ZUMBADOR
 void configurar_logica() {
   pinMode(PIN_ZUMBADOR, OUTPUT);
   digitalWrite(PIN_ZUMBADOR, LOW); 
@@ -31,32 +31,40 @@ void configurar_logica() {
 
 void ejecutar_logica(bool hay_gas, float temperatura) {
 
-  //Fuego (Temp alta y Gas)
+  // CONCATENACION STRING DEPTO
+  String Dpto_str = "";
+  if (Dpto != nullptr && strlen(Dpto) > 0) {
+    Dpto_str = " en Dpto: " + String(Dpto);
+  }
+
+//CONDICIONES DE ALERTA SEGUN GRAVEDAD
+
+  // FUEGO (Temp alta y Gas)
   if (temperatura > limite_temperatura && hay_gas == true) {
     if (ultimo_mensaje_alerta != msg_incendio) {
       activar_zumbador(PIN_ZUMBADOR, 20);
-      bot.sendMessage(CHAT_ID, msg_incendio);
+      bot.sendMessage(CHAT_ID, msg_incendio + Dpto_str);
       ultimo_mensaje_alerta = msg_incendio;
     }
   }
-  //Solo Temp Alta
+  // TEMPERATURA ALTA
   else if (temperatura > limite_temperatura) {
     if (ultimo_mensaje_alerta != msg_temp_alta) {
-      bot.sendMessage(CHAT_ID, msg_temp_alta );
+      bot.sendMessage(CHAT_ID, msg_temp_alta + Dpto_str);
       activar_zumbador(PIN_ZUMBADOR, 1);
       ultimo_mensaje_alerta = msg_temp_alta;
     }
   }
-  //Solo Gas
+  // GAS DETECTADO
   else if (hay_gas == true) {
     if (ultimo_mensaje_alerta != msg_gas) {
-      bot.sendMessage(CHAT_ID, msg_gas);
+      bot.sendMessage(CHAT_ID, msg_gas + Dpto_str);
       activar_zumbador(PIN_ZUMBADOR, 1);
       ultimo_mensaje_alerta = msg_gas;
     }
   }
-  //Normal
+  // CONDICIONES NORMALES
   else {
-    ultimo_mensaje_alerta = ""; // Limpia el ultimo mensaje
+    ultimo_mensaje_alerta = ""; // LIMPIA EL BUFER, EVITANDO SPAM
   }
 }

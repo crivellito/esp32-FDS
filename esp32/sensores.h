@@ -5,11 +5,10 @@
 #include <LiquidCrystal.h>
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
-#include "logica.h"
 
+// VARIABLES GLOBALES
 extern LiquidCrystal pantalla_lcd;
 extern DHT sensor_dht;
-
 
 void configurar_sensores();
 float leer_temperatura();
