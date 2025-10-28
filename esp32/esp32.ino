@@ -19,7 +19,7 @@ DHT sensor_dht(PIN_TEMP, TIPO_DHT);
 unsigned long bot_ultimo_tiempo = 0;
 int limite_temperatura = LIMITE_TEMP_DEFECTO; // Límite de temperatura
 bool hay_gas = false;
-
+int pitidos;
 
 char* nombre_red = nullptr;
 char* clave_red = nullptr;

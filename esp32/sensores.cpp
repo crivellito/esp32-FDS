@@ -1,5 +1,6 @@
 #include "sensores.h"
 #include "config.h"
+#include "logica.h"
 
 //Inicializa pines
 void configurar_sensores() {

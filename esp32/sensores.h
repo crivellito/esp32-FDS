@@ -5,7 +5,7 @@
 #include <LiquidCrystal.h>
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
-
+#include "logica.h"
 
 extern LiquidCrystal pantalla_lcd;
 extern DHT sensor_dht;
