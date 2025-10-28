@@ -20,7 +20,7 @@ Widget::Widget(QWidget *parent)
 
    /* QTextStream out(stdout);
 
-    serialPort.setPortName("COM5");                                                //aqui va el puerto del arduino que se va a usar
+    serialPort.setPortName("/dev/ttyUSB0");                                                //aqui va el puerto del arduino que se va a usar
     serialPort.setBaudRate(QSerialPort::Baud115200);
     serialPort.setDataBits(QSerialPort::Data8);
     serialPort.setParity(QSerialPort::NoParity);
