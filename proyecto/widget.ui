@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>747</width>
-    <height>434</height>
+    <width>767</width>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -76,7 +76,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>170</y>
+     <y>220</y>
      <width>341</width>
      <height>61</height>
     </rect>
@@ -94,7 +94,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>220</y>
+     <y>270</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -112,7 +112,7 @@
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>190</y>
+     <y>240</y>
      <width>71</width>
      <height>22</height>
     </rect>
@@ -124,8 +124,8 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>380</y>
+     <x>630</x>
+     <y>430</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -145,7 +145,7 @@ selection-background-color: rgb(255, 175, 175);</string>
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>220</y>
+     <y>270</y>
      <width>26</width>
      <height>26</height>
     </rect>
@@ -202,8 +202,8 @@ max-height: 24px;</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>180</y>
+     <x>690</x>
+     <y>230</y>
      <width>50</width>
      <height>50</height>
     </rect>
@@ -261,8 +261,8 @@ max-height: 24px;</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>240</y>
+     <x>690</x>
+     <y>290</y>
      <width>50</width>
      <height>50</height>
     </rect>
@@ -319,8 +319,8 @@ max-height: 24px;</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>680</x>
-     <y>300</y>
+     <x>690</x>
+     <y>350</y>
      <width>50</width>
      <height>50</height>
     </rect>
@@ -374,8 +374,8 @@ max-height: 24px;</string>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>190</y>
+     <x>470</x>
+     <y>240</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -392,8 +392,8 @@ max-height: 24px;</string>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>250</y>
+     <x>450</x>
+     <y>300</y>
      <width>251</width>
      <height>31</height>
     </rect>
@@ -410,8 +410,8 @@ max-height: 24px;</string>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>310</y>
+     <x>470</x>
+     <y>360</y>
      <width>281</width>
      <height>31</height>
     </rect>
@@ -428,8 +428,8 @@ max-height: 24px;</string>
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>380</y>
+     <x>20</x>
+     <y>430</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -461,6 +461,34 @@ max-height: 24px;</string>
     <rect>
      <x>290</x>
      <y>110</y>
+     <width>341</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>341</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Ingrese el departamento:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Departamento">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>150</y>
      <width>341</width>
      <height>20</height>
     </rect>

@@ -31,6 +31,8 @@ private slots:
 
     void on_PuertoSerie_cursorPositionChanged(int arg1, int arg2);
 
+    void on_Departamento_cursorPositionChanged(int arg1, int arg2);
+
 private:
     Ui::Widget *ui;
     QSerialPort serialPort;

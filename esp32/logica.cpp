@@ -1,5 +1,8 @@
 #include "logica.h"
-#include "config.h"
+static String last_msg = ""; 
+String temp_alta_msg = "Se detectaron temperaturas elevadas en el dpto: " + String(Dpto);
+String posib_incendio_msg = "En el Dpto:" + String(Dpto) "se detectó posibilidad de incendio, la alarma se activó";
+String gas_msg = "Se detectaron gases en el Dpto: " + String(Dpto);
 
 
 static String ultimo_mensaje_alerta = "";
