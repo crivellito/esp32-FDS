@@ -19,7 +19,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>10</y>
      <width>341</width>
      <height>61</height>
@@ -37,8 +37,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>60</y>
+     <x>10</x>
+     <y>50</y>
      <width>341</width>
      <height>61</height>
     </rect>
@@ -65,9 +65,9 @@
   <widget class="QLineEdit" name="ContraseniaWifi">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>80</y>
-     <width>301</width>
+     <x>290</x>
+     <y>70</y>
+     <width>341</width>
      <height>22</height>
     </rect>
    </property>
@@ -75,8 +75,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>140</y>
+     <x>10</x>
+     <y>170</y>
      <width>341</width>
      <height>61</height>
     </rect>
@@ -93,8 +93,8 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>190</y>
+     <x>10</x>
+     <y>220</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -111,8 +111,8 @@
   <widget class="QLineEdit" name="Temp">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>160</y>
+     <x>290</x>
+     <y>190</y>
      <width>71</width>
      <height>22</height>
     </rect>
@@ -144,8 +144,8 @@ selection-background-color: rgb(255, 175, 175);</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>190</y>
+     <x>310</x>
+     <y>220</y>
      <width>26</width>
      <height>26</height>
     </rect>
@@ -202,8 +202,8 @@ max-height: 24px;</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>130</y>
+     <x>680</x>
+     <y>180</y>
      <width>50</width>
      <height>50</height>
     </rect>
@@ -261,8 +261,8 @@ max-height: 24px;</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>190</y>
+     <x>680</x>
+     <y>240</y>
      <width>50</width>
      <height>50</height>
     </rect>
@@ -319,8 +319,8 @@ max-height: 24px;</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>250</y>
+     <x>680</x>
+     <y>300</y>
      <width>50</width>
      <height>50</height>
     </rect>
@@ -374,8 +374,8 @@ max-height: 24px;</string>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>140</y>
+     <x>460</x>
+     <y>190</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -392,8 +392,8 @@ max-height: 24px;</string>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>200</y>
+     <x>440</x>
+     <y>250</y>
      <width>251</width>
      <height>31</height>
     </rect>
@@ -410,8 +410,8 @@ max-height: 24px;</string>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>260</y>
+     <x>460</x>
+     <y>310</y>
      <width>281</width>
      <height>31</height>
     </rect>
@@ -436,6 +436,34 @@ max-height: 24px;</string>
    </property>
    <property name="text">
     <string>Conectar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>341</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Ingrese el Puerto Serie:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="PuertoSerie">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>110</y>
+     <width>341</width>
+     <height>20</height>
+    </rect>
    </property>
   </widget>
  </widget>
