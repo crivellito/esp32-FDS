@@ -20,6 +20,7 @@ unsigned long bot_lasttime;
 
 char* ssid = nullptr;
 char* password = nullptr;
+char* Dpto = nullptr;
 
 int temp_limit = 40;
 String info_telegram = "info";
@@ -76,6 +77,7 @@ if(Serial.available()) {
         // Actualizar punteros
         if(i == 0) ssid = escritura[0];
         else if(i == 1) password = escritura[1];
+        else if(i == 2) Dpto = escritura[2];
 
         // Conectar solo si ya tenemos ssid y password
         if(ssid && password) {

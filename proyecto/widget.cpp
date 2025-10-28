@@ -18,36 +18,6 @@ Widget::Widget(QWidget *parent)
     ui->btnAlarmaGas->setCheckable(true);
     ui->Temp->setReadOnly(true);
 
-   /* QTextStream out(stdout);
-
-    serialPort.setPortName("COM5");                                                //aqui va el puerto del arduino que se va a usar
-    serialPort.setBaudRate(QSerialPort::Baud115200);
-    serialPort.setDataBits(QSerialPort::Data8);
-    serialPort.setParity(QSerialPort::NoParity);
-    serialPort.setStopBits(QSerialPort::OneStop);
-    serialPort.setFlowControl(QSerialPort::NoFlowControl);
-
-    if(!serialPort.open(QIODevice::ReadWrite)){         // intenta abrir el puerto serie, se abre para lectura y escritura
-        out <<"No se pudo abrir el puerto serie" << Qt::endl;
-        return ;
-    }
-
-     connect(&serialPort, &QSerialPort::readyRead, this, &Widget::leerSensor);
-
-    out << "Puerto serie abierto correctamente" << Qt::endl;
-
-
-
-    //Espera a que haya datos disponibles para leer
-    if(serialPort.waitForReadyRead(5000)){  //Espera hasta 3 segundos hasta que ingrese el dato
-        QString receivedData = serialPort.readLine();
-
-        out <<"Datos recibidos: " << receivedData << Qt::endl;
-    } else {
-        out << "No se recibio datos a tiempo" << Qt::endl;
-    }
-
-    */
 }
 
 Widget::~Widget()
@@ -271,6 +241,7 @@ void Widget::on_pushButton_3_clicked()
 
     QString ssid = ui->NombreWifi->text().trimmed();
     QString password = ui->ContraseniaWifi->text().trimmed();
+    QString Departamento = ui->Departamento->text().trimmed();
 
     if (ssid.isEmpty() || password.isEmpty()) {
         qDebug() << "SSID o contraseña vacíos";
@@ -297,10 +268,27 @@ void Widget::on_pushButton_3_clicked()
         qDebug() << "Puerto serie no disponible";
     }
 
+    mensaje = "E~2~" + Departamento + "\n";
+
+    if (serialPort.isOpen()){
+        serialPort.write(mensaje.toUtf8());
+        serialPort.flush();
+        qDebug() << "Enviado al ESP32:" << mensaje;
+    } else {
+        qDebug() << "Puerto serie no disponible";
+    }
+
 }
 
 
 void Widget::on_PuertoSerie_cursorPositionChanged(int arg1, int arg2)
+{
+    Q_UNUSED(arg1);
+    Q_UNUSED(arg2);
+}
+
+
+void Widget::on_Departamento_cursorPositionChanged(int arg1, int arg2)
 {
     Q_UNUSED(arg1);
     Q_UNUSED(arg2);

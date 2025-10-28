@@ -9,6 +9,7 @@
 extern UniversalTelegramBot bot;
 extern LiquidCrystal lcd;
 extern int temp_limit;
+extern char Dpto;
 
 void logica (bool, float, int);
 void buzzer (int);
