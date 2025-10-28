@@ -29,9 +29,10 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_PuertoSerie_cursorPositionChanged(int arg1, int arg2);
+
 private:
-    Ui::Widget *ui;      // Puntero a la interfaz
-    //QSerialPort *serialPort;
+    Ui::Widget *ui;
     QSerialPort serialPort;
     float temperatura = 0.0;
     void actualizarBotonAlarmaGas(bool estado);

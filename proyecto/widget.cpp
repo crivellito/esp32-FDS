@@ -18,7 +18,7 @@ Widget::Widget(QWidget *parent)
     ui->btnAlarmaGas->setCheckable(true);
     ui->Temp->setReadOnly(true);
 
-    QTextStream out(stdout);
+   /* QTextStream out(stdout);
 
     serialPort.setPortName("COM5");                                                //aqui va el puerto del arduino que se va a usar
     serialPort.setBaudRate(QSerialPort::Baud115200);
@@ -36,6 +36,8 @@ Widget::Widget(QWidget *parent)
 
     out << "Puerto serie abierto correctamente" << Qt::endl;
 
+
+
     //Espera a que haya datos disponibles para leer
     if(serialPort.waitForReadyRead(5000)){  //Espera hasta 3 segundos hasta que ingrese el dato
         QString receivedData = serialPort.readLine();
@@ -45,30 +47,13 @@ Widget::Widget(QWidget *parent)
         out << "No se recibio datos a tiempo" << Qt::endl;
     }
 
+    */
 }
 
 Widget::~Widget()
 {
     delete ui;
 }
-
-/*
-void Widget::leerSensor()
-{
-    // Simulación de sensor sin esp32
-    static bool estadoSimulado = false;
-    estadoSimulado = !estadoSimulado;
-    bool sensorDetecta = estadoSimulado;
-
-    temperatura = sensorDetecta ? 55.0 : 22.0; // ejemplo
-    ui->Temp->setText(QString::number(temperatura, 'f', 2));
-
-    actualizarBotonAlarmaGas(sensorDetecta);
-    actualizarBotonAlarmaMedia(sensorDetecta);
-    actualizarBotonAlarmaAlta(sensorDetecta);
-    actualizarBotonAlarmaBaja(sensorDetecta);
-}
-*/
 
 void Widget::leerSensor() {
     while (serialPort.canReadLine()) {
@@ -245,6 +230,45 @@ void Widget::on_ContraseniaWifi_cursorPositionChanged(int arg1, int arg2)
 
 void Widget::on_pushButton_3_clicked()
 {
+
+    QTextStream out(stdout);
+
+    // Leer el puerto desde el QLineEdit
+    QString puerto = ui->PuertoSerie->text().trimmed();
+
+    if (puerto.isEmpty()) {
+        out << "Debe ingresar un puerto (por ejemplo COM5 o /dev/ttyUSB0)" << Qt::endl;
+        return;
+    }
+
+    // Cerrar si ya estaba abierto
+    if (serialPort.isOpen()) {
+        serialPort.close();
+        out << "Puerto cerrado antes de reconectar." << Qt::endl;
+    }
+
+    // Configurar el puerto serie
+    serialPort.setPortName(puerto);
+    serialPort.setBaudRate(QSerialPort::Baud115200);
+    serialPort.setDataBits(QSerialPort::Data8);
+    serialPort.setParity(QSerialPort::NoParity);
+    serialPort.setStopBits(QSerialPort::OneStop);
+    serialPort.setFlowControl(QSerialPort::NoFlowControl);
+
+    // Intentar abrir el puerto
+    if (!serialPort.open(QIODevice::ReadWrite)) {
+        out << "No se pudo abrir el puerto " << puerto
+            << ": " << serialPort.errorString() << Qt::endl;
+        return;
+    }
+
+    out << "Puerto " << puerto << " abierto correctamente." << Qt::endl;
+
+    // Conectar señal de lectura si no está conectada
+    connect(&serialPort, &QSerialPort::readyRead, this, &Widget::leerSensor, Qt::UniqueConnection);
+
+
+
     QString ssid = ui->NombreWifi->text().trimmed();
     QString password = ui->ContraseniaWifi->text().trimmed();
 
@@ -273,5 +297,12 @@ void Widget::on_pushButton_3_clicked()
         qDebug() << "Puerto serie no disponible";
     }
 
+}
+
+
+void Widget::on_PuertoSerie_cursorPositionChanged(int arg1, int arg2)
+{
+    Q_UNUSED(arg1);
+    Q_UNUSED(arg2);
 }
 
